@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Mentor - Clipboard landing page coding solution</title>
+    <link rel="shortcut icon" href="images/favicon-32x32.png" type="image/x-icon">
+    <!-- Bootstrap CDN link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Google Font Bai Jamjuree link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Bai Jamjuree", sans-serif;
+        }
+
+        :root {
+            /* Primary */
+            --green: hsl(171, 66%, 44%);
+            --blue: hsl(233, 100%, 69%);
+            /* Neutral */
+            --drk-gray: hsl(210, 10%, 33%);
+            --gray: hsl(201, 11%, 66%);
+        }
+
+        .container-fluid {
+            max-width: 1440px;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        .hero {
+            margin: 0;
+            height: 100vh;
+            background: url(images/bg-header-desktop.png);
+            background-position: bottom;
+            background-size: cover;
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin: 30px 0 20px 0;
+            font-weight: 600;
+            color: var(--drk-gray);
+            text-align: center;
+        }
+
+        h4 {
+            margin: 50px 0 10px 0;
+            font-weight: 600;
+            color: var(--drk-gray);
+        }
+
+        p {
+            color: var(--gray);
+            font-size: 18px;
+            width: 700px;
+            text-align: center;
+        }
+
+        .row p {
+            color: var(--gray);
+            font-size: 18px;
+            width: 400px;
+            text-align: left;
+        }
+
+        .btn {
+            padding: 10px 30px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 50px;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .icon img {
+            width: 50px;
+        }
+
+        .icon p {
+            text-align: center;
+            width: unset;
+        }
+
+        .logos img {
+            width: 70%;
+        }
+
+        .col-md {
+            display: flex;
+            align-items: center;
+        }
+
+        .footer {
+            background: rgb(245, 245, 245);
+            padding: 3em 8em;
+        }
+
+        .footer-logo img {
+            width: 50px;
+        }
+
+        .social-icons img {
+            margin-left: 20px;
+        }
+
+        .fb,
+        .twt,
+        .inst {
+            display: flex;
+            align-items: center;
+        }
+
+        .fb-grn {
+            display: none;
+        }
+
+        .twt-grn {
+            display: none;
+        }
+
+        .inst-grn {
+            display: none;
+        }
+
+        .fb:hover .fb-drk {
+            display: none;
+        }
+
+        .fb:hover .fb-grn {
+            display: block;
+        }
+
+        .twt:hover .twt-drk {
+            display: none;
+        }
+
+        .twt:hover .twt-grn {
+            display: block;
+        }
+
+        .inst:hover .inst-drk {
+            display: none;
+        }
+
+        .inst:hover .inst-grn {
+            display: block;
+        }
+
+        .social-icons {
+            cursor: pointer;
+            width: unset;
+        }
+
+        .footer-links {
+            display: inline-flex;
+            /* width: fit-content; */
+
+        }
+
+        .footer p {
+            margin: 0 0 10px 0;
+            padding: 0;
+            color: var(--drk-gray);
+            text-align: left;
+            width: unset;
+            cursor: pointer;
+        }
+
+        .link-list {
+            margin-left: 5em;
+        }
+
+        .footer p:hover {
+            color: var(--green);
+        }
+
+        .iOS-btn:hover {
+            box-shadow: 5px 5px 5px hsla(171, 66%, 44%, .3);
+        }
+
+        .Mac-btn:hover {
+            box-shadow: 5px 5px 5px hsla(233, 100%, 69%, .3);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .footer {
+                padding: 2em 3em;
+            }
+
+            .footer p {
+                margin: 0 0 5px 0;
+                font-size: 14px;
+            }
+
+            .footer-links {
+                /* display: flex; */
+                margin-right: 10px;
+            }
+
+            .link-list {
+                margin-left: 2em;
+            }
+
+            .footer img {
+                width: 40px;
+            }
+
+            .social-icons img {
+                width: 20px;
+            }
+
+            .container {
+                margin: 50px auto;
+            }
+        }
+
+        @media (max-width: 675px) {
+
+            p {
+                width: unset;
+            }
+
+            .footer {
+                padding: 24px;
+                justify-content: space-around;
+            }
+
+            .icon {
+                margin: 0;
+                display: grid;
+                grid-template-columns: 1fr !important;
+            }
+
+            .col {
+                padding: 0;
+                /* width: unset; */
+            }
+
+            .row {
+                padding: 0;
+                margin: 0;
+            }
+
+            h4 {
+                margin: 20px 0 10px 0;
+            }
+
+            .icon img {
+                width: 30px;
+            }
+
+            .logos img {
+                width: 150px;
+            }
+
+            .col-md {
+                flex-direction: column;
+                justify-content: space-between;
+                margin-bottom: 50px;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .footer {
+                flex-direction: column;
+                justify-content: center;
+
+            }
+
+            .footer-links {
+                flex-direction: column;
+            }
+
+            .link-list {
+                margin: 0;
+            }
+
+            .link-list p {
+                text-align: center !important;
+                font-size: unset;
+                margin-bottom: 2em;
+            }
+
+            .fter {
+                margin-bottom: 30px;
+            }
+
+            .footer-logo {
+                margin-top: 20px;
+            }
+
+            .btn {
+                margin-bottom: 20px;
+            }
+
+            .row {
+                grid-template-columns: 1fr !important;
+                padding: 20px;
+            }
+
+            .row p {
+                width: unset;
+            }
+
+            .hero {
+                background: url(images/bg-header-mobile.png);
+                background-size: cover;
+                background-position: top;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .btns {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            .logo img {
+                width: 150px;
+                margin-top: 10em;
+            }
+
+            .hero-txt {
+                padding: 0 1em;
+            }
+
+            h1,
+            h2 {
+                width: 10em;
+            }
+
+            h4,
+            .col .col p {
+                text-align: center;
+            }
+
+            h4 {
+                margin-top: 3em;
+            }
+
+            .col-lg,
+            .icon,
+            .container {
+                padding: 0;
+            }
+
+            .clip-txt {
+                padding: 2em;
+                margin-top: -3em !important;
+            }
+
+            .footer-logo {
+                width: 40px;
+            }
+
+            .fb,
+            .twt,
+            .inst {
+                margin-right: 2em;
+            }
+
+            .social-icons img {
+                width: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="hero d-flex flex-column align-items-center justify-content-center gap-4">
+            <div class="logo">
+                <img src="images/logo.svg" alt="logo">
+            </div>
+            <div class="hero-txt d-flex align-items-center flex-column">
+                <h1>A history of everything you copy</h1>
+                <p>Clipboard allows you to track and organize everything you copy. Instantly <br> access your clipboard
+                    on
+                    all your devices.</p>
+            </div>
+            <div class="btns">
+                <a href="#" class="btn btn-primary btn-lg iOS-btn" style="background-color: var(--green);">Download for
+                    iOS</a>
+                <a href="#" class="btn btn-secondary btn-lg Mac-btn" style="background-color: var(--blue);">Download for
+                    Mac</a>
+            </div>
+        </div>
+
+        <div class="container d-flex flex-column align-items-center justify-content-center gap-4"
+            style="margin: 100px auto">
+            <h2>Keep track of your snippets</h2>
+            <p>Clipboard instantly stores any item you copy in the cloud, meaning you can access your snippets
+                immediately on all your devices. Our Mac and iOS apps will help you organize everything.</p>
+        </div>
+
+        <div class="container-fluid">
+            <div style="grid-template-columns: 1fr 1fr;" class="row d-grid column-gap-5">
+                <div class="col">
+                    <img src="images/image-computer.png" alt="Computer">
+                </div>
+                <div class="col">
+                    <div class="col">
+                        <h4>Quick Search</h4>
+                        <p>Easily search your snippets by content, category, web address, application, and more.</p>
+                    </div>
+                    <div class="col">
+                        <h4>iCloud Sync</h4>
+                        <p>Instantly saves and syncs snippets across all your devices.</p>
+                    </div>
+                    <div class="col">
+                        <h4>Complete History</h4>
+                        <p>Retrieve any snippets from the first moment you started using the app.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container d-flex flex-column align-items-center justify-content-center gap-4"
+            style="margin: 100px auto">
+            <h2>Access Clipboard anywhere</h2>
+            <p>Whether you're on the go, or at your computer, you can access all your Clipboard snippets in a few simple
+                clicks.</p>
+        </div>
+
+        <div class="container d-flex flex-column align-items-center justify-content-center gap-4"
+            style="margin: 100px auto">
+            <img src="images/image-devices.png" alt="Devices" style="width: 80%;">
+        </div>
+
+        <div class="container d-flex flex-column align-items-center justify-content-center gap-4"
+            style="margin: 100px auto">
+            <h2 style="margin-bottom: 0;">Supercharge your workflow</h2>
+            <p>We've got the tools to boost your productivity.</p>
+        </div>
+
+        <div class="container" style="box-sizing: border-box; margin: 0 auto;">
+            <div style="grid-template-columns: 1fr 1fr 1fr; margin: 0 1em;" class="icon row d-grid text-center">
+                <div class="col-lg">
+                    <img src="images/icon-blacklist.svg" alt="">
+                    <h4>Create blacklists</h4>
+                    <p>Ensure sensitive information never make its way to your clipboard by excluding certain sources.
+                    </p>
+                </div>
+                <div class="col-lg">
+                    <img src="images/icon-text.svg" alt="">
+                    <h4>Plain text snippets</h4>
+                    <p>Remove unwanted formatting from copied text for a consistent look.</p>
+                </div>
+                <div class="col-lg">
+                    <img src="images/icon-preview.svg" alt="">
+                    <h4>Sneak preview</h4>
+                    <p>Quick preview of all snippets on your Clipboard for easy access.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container d-flex align-items-center" style="margin: 10em auto;">
+            <div class="logos row  d-flex justify-content-between" style="margin: 0 1em; width: 100%;">
+                <div class="col-md text-center">
+                    <img src="images/logo-google.png" alt="">
+                </div>
+                <div class="col-md text-center">
+                    <img src="images/logo-ibm.png" alt="">
+                </div>
+                <div class="col-md text-center">
+                    <img src="images/logo-microsoft.png" alt="">
+                </div>
+                <div class="col-md text-center">
+                    <img src="images/logo-hp.png" alt="">
+                </div>
+                <div class="col-md text-center">
+                    <img src="images/logo-vector-graphics.png" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="container d-flex flex-column align-items-center justify-content-center gap-4 clip-txt"
+            style="margin: 100px auto">
+            <h2 style="margin-bottom: 0;">Clipboard for iOS and Mac OS</h2>
+            <p>Available for free on the App Store. Download for Mac or iOS, sync with iCloud and you're ready to start
+                adding to your clipboard.</p>
+            <div class="btns">
+                <a href="#" class="btn btn-primary btn-lg iOS-btn" style="background-color: var(--green);">Download for
+                    iOS</a>
+                <a href="#" class="btn btn-secondary btn-lg Mac-btn" style="background-color: var(--blue);">Download for
+                    Mac</a>
+            </div>
+        </div>
+
+        <div class="footer  d-flex justify-content-between align-items-center">
+            <div class="footer-logo fter">
+                <img src="images/logo.svg" alt="logo">
+            </div>
+            <div class="footer-links fter">
+                <div class="link-list">
+                    <p>FAQs</p>
+                    <p>Contact Us</p>
+                </div>
+                <div class="link-list">
+                    <p>Privacy Policy</p>
+                    <p>Press Kit</p>
+                </div>
+                <div class="link-list">
+                    <p>Install Guide</p>
+                </div>
+            </div>
+            <div class="social-icons  d-flex justify-content-evenly fter">
+                <div class="fb">
+                    <img src="images/icon-facebook.svg" alt="Facebook icon" class="fb-drk">
+                    <img src="images/icon-facebook - green.svg" alt="Facebook icon" class="fb-grn">
+                </div>
+                <div class="twt">
+                    <img src="images/icon-twitter.svg" alt="Twitter icon" class="twt-drk">
+                    <img src="images/icon-twitter - green.svg" alt="Twitter icon" class="twt-grn">
+                </div>
+                <div class="inst">
+                    <img src="images/icon-instagram.svg" alt="Instagram Icon" class="inst-drk">
+                    <img src="images/icon-instagram - green.svg" alt="Instagram Icon" class="inst-grn">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+        integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+        crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
