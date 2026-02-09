@@ -18,8 +18,8 @@ Users should be able to:
 - See hover states for all interactive elements on the page
 
 ### Links
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Solution](https://github.com/dynalinksolution/Clipboard-landing-page-coding-challenge)
+- Live Site URL: [Live Site](https://dynalinksolution.github.io/Clipboard-landing-page-coding-challenge/)
 
 ### Built with
 - HTML5 markup
